@@ -1,0 +1,111 @@
+CREATE DATABASE `thrifter_db`;
+CREATE TABLE `tbl_ratings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `scheme_id` varchar(45) DEFAULT NULL,
+  `scheme_rating` varchar(45) DEFAULT NULL,
+  `admins_rating` varchar(45) DEFAULT NULL,
+  `initator_rating` varchar(45) DEFAULT NULL,
+  `created_by` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ;
+
+CREATE TABLE `tbl_scheme` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `scheme_code` varchar(45) DEFAULT NULL,
+  `scheme_name` varchar(145) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `target_amount` double DEFAULT 0,
+  `current_balance` double DEFAULT 0,
+  `start_date` datetime DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `max_participants` int(11) DEFAULT 1,
+  `created_by` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ;
+
+CREATE TABLE `tbl_scheme_admins` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `scheme_id` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `designation` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT current_timestamp(),
+  `created_by` varchar(45) DEFAULT NULL,
+  `updated_date` timestamp NULL DEFAULT NULL,
+  `updated_by` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ;
+
+CREATE TABLE `tbl_scheme_contributions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `scheme_id` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `amount` double DEFAULT 0,
+  `attachment` varchar(245) DEFAULT NULL,
+  `payment_method` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT current_timestamp(),
+  `created_by` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ;
+
+CREATE TABLE `tbl_scheme_expenses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `scheme_id` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `amount` double DEFAULT 0,
+  `purpose` text DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT current_timestamp(),
+  `created_by` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ;
+
+CREATE TABLE `tbl_scheme_purposes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `scheme_id` varchar(45) DEFAULT NULL,
+  `purpose_name` text DEFAULT NULL,
+  `created_by` varchar(45) DEFAULT NULL,
+  `created_date` varchar(45) DEFAULT 'current_timestamp',
+  PRIMARY KEY (`id`)
+) ;
+
+CREATE TABLE `tbl_scheme_registrations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `scheme_id` varchar(45) DEFAULT NULL,
+  `registrant_id` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT current_timestamp(),
+  `status` varchar(45) DEFAULT NULL,
+  `updated_date` timestamp NULL DEFAULT NULL,
+  `updated_by` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ;
+
+CREATE TABLE `tbl_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(45) DEFAULT NULL,
+  `full_name` varchar(45) DEFAULT NULL,
+  `age` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `gender` varchar(45) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  `lga` varchar(45) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,
+  `wallet_id` varchar(45) DEFAULT NULL,
+  `wallet_balance` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ;
+
+CREATE TABLE `tbl_wallet_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL,
+  `payment_amount` double DEFAULT 0,
+  `payment_type` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ;
+

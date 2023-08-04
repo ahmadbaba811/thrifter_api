@@ -1,0 +1,1 @@
+sequelize-auto -o "./src/models" -d thrifter_db -h localhost -u root -p 3306 -x a -e mysql
