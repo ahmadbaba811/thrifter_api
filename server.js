@@ -14,16 +14,7 @@ app.use(express.urlencoded({ extended: true }))
 
 
 app.use("/schemes", require("./src/routes/schemes"));
-
-
-
-
-
-
-
-
-
-
+app.use("/users", require("./src/routes/users"));
 
 
 

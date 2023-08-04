@@ -12,4 +12,6 @@ const GetAllRatings = async () => {
 }
 
 
+
+
 module.exports = { GetAllRatings }

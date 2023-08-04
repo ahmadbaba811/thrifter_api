@@ -55,6 +55,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: true,
       defaultValue: Sequelize.Sequelize.fn('current_timestamp')
+    },
+    password: {
+      type: DataTypes.STRING(45),
+      allowNull: true
     }
   }, {
     sequelize,
